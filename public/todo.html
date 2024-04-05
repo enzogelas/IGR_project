@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="todo.css">
+    </head>
+    <body>
+        <div class="vertical_div">
+            <h1 id="TITLE"> TOODOO</h1>
+            <div class="horizontal_div" id="MAIN_DIV">
+                <div class="vertical_div" id="CATEGORIES">
+                        <h3>Categories</h3>
+                    <div class="vertical_div" id="CATEGORY_LIST">
+                    </div>
+                    <button class="ADD_BUTTON" onclick="goToCategoryForm()">+</button>
+                </div>
+                <div class="vertical_div" id="TASKS">
+                    <div class="vertical_div" id="TASK_GROUPS">
+                        <div class="vertical_div group" id="TO_DO">
+                            <h3>TO DO</h3>
+                            <div class="horizontal_div">
+                                <div class="horizontal_div" id="TO_DO_LIST">
+                                </div>
+                                <button class="ADD_BUTTON" onclick="goToTaskFormTODO()">+</button>
+                            </div>
+                        </div>
+                        <div class="vertical_div group" id="IN_PROGRESS">
+                            <h3>IN PROGRESS</h3>
+                            <div class="horizontal_div">
+                                <div class="horizontal_div" id="IN_PROGRESS_LIST">
+                                </div>
+                                <button class="ADD_BUTTON" onclick="goToTaskFormINPROGRESS()">+</button>
+                            </div>
+                        </div>
+                        <div class="vertical_div group" id="FINISHED">
+                            <h3>FINISHED</h3>
+                            <div class="horizontal_div">
+                                <div class="horizontal_div" id="FINISHED_LIST">
+                                </div>
+                                <button class="ADD_BUTTON" onclick="goToTaskFormFINISHED()">+</button>
+                            </div>
+                        </div>   
+                    </div>                         
+                </div>
+
+                <div class="vertical_div" id="REMINDERS">
+                    <h3>Reminders</h3>
+                    <div class="vertical_div" id="REMINDER_LIST">
+                    </div>
+                    <button class="ADD_BUTTON" onclick="goToReminderForm()">+</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="todo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+#TITLE {
+    text-align: center;
+    height: 10%;
+    width: 100%;
+    color: white;
+    background-color: crimson;
+}
+
+div {
+    width: 100%;
+    display: flex;
+}
+
+.vertical_div {
+    flex-direction: column;
+    align-items: center;
+}
+
+.horizontal_div {
+    flex-direction: row;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+}
+
+.modify {
+    width: 20px;
+    height: 20px;
+    background-image: url("../icons/modify.png");
+    border: none;
+    background-size: cover;
+    background-color: white;
+}
+
+.modify:hover {
+    border: 2px solid black;
+}
+
+.color_and_modify {
+    justify-content: space-between;
+}
+
+#MAIN_DIV {
+    height: 100%;
+    justify-content: space-between;
+}
+
+#TASKS {
+    width: 60%;
+}
+
+#TASK_GROUPS {
+    gap: 10px; /*To keep a gap between the three groups : to do, in progress, finished*/
+}
+
+#CATEGORIES, #REMINDERS {
+    justify-content: flex-start;
+    width: 18%;
+    border: 2px solid black;
+}
+
+.category, .reminder { /*This class is created in the todo.js file while updating the page*/
+    justify-content: space-around;
+    align-items: center;
+}
+
+.group {
+    border: 2px solid black; 
+}
+
+.task {
+    max-width: 30%; /*So the tasks doesn't take all the screen when there are few tasks*/
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    margin: 1%;
+}
+
+
+.ADD_BUTTON {
+    border-radius: 35%; /* Rounded buttons */
+    width: 30px;
+    height: 30px;
+}

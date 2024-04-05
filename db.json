@@ -1,0 +1,80 @@
+{
+  "title": "TOODOO : The best way to remember everything",
+  "categories": [
+    {
+      "name": "Work",
+      "color": "ff0000"
+    },
+    {
+      "name": "Home",
+      "color": "00ff00"
+    },
+    {
+      "name": "Associations",
+      "color": "0000ff"
+    },
+    {
+      "name": "Secret Agent",
+      "color": "666666"
+    },
+    {
+      "name": "Joking",
+      "color": "#d95959"
+    }
+  ],
+  "tasks": {
+    "to_do": [
+      {
+        "description": "Send an email to Michel",
+        "category": "Work"
+      },
+      {
+        "description": "Finish the powerpoint",
+        "category": "Associations"
+      },
+      {
+        "description": "Fix the light",
+        "category": "Home"
+      },
+      {
+        "description": "Agent task",
+        "category": "Secret Agent"
+      }
+    ],
+    "in_progress": [
+      {
+        "description": "Write a music sheet",
+        "category": "Home"
+      },
+      {
+        "description": "Make Jokes",
+        "category": "Joking"
+      }
+    ],
+    "finished": [
+      {
+        "description": "Kill the mole",
+        "category": "Home"
+      },
+      {
+        "description": "Plan the meeting",
+        "category": "Associations"
+      },
+      {
+        "description": "Kill Bill",
+        "category": "Secret Agent"
+      }
+    ]
+  },
+  "reminders": [
+    {
+      "description": "Wake up at 6 a.m. tomorrow !!!"
+    },
+    {
+      "description": "Feed the dog"
+    },
+    {
+      "description": "Feed the cat"
+    }
+  ]
+}
