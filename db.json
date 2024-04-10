@@ -49,6 +49,10 @@
       {
         "description": "Make Jokes",
         "category": "Joking"
+      },
+      {
+        "description": "Kill Joe",
+        "category": "Secret Agent"
       }
     ],
     "finished": [

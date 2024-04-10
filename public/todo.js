@@ -27,21 +27,21 @@ function update(){
                 todo_list.removeChild(todo_list.firstChild);
             }
             for (const task of data.tasks.to_do){
-                createTaskOnPage(task,todo_list, data.categories); // data.categories is useful to set the color of the task
+                createTaskOnPage(task,todo_list, data.categories, "to_do"); // data.categories is useful to set the color of the task
             }
 
             while(in_progress_list.firstChild){
                 in_progress_list.removeChild(in_progress_list.firstChild);
             }
             for (const task of data.tasks.in_progress){
-                createTaskOnPage(task,in_progress_list, data.categories)
+                createTaskOnPage(task,in_progress_list, data.categories, "in_progress")
             }
 
             while(finished_list.firstChild){
                 finished_list.removeChild(finished_list.firstChild);
             }
             for (const task of data.tasks.finished){
-                createTaskOnPage(task, finished_list, data.categories)
+                createTaskOnPage(task, finished_list, data.categories, "finished")
             }
 
             // Update the reminders
@@ -107,7 +107,7 @@ function createCategoryOnPage(category, group) {
     group.appendChild(newCategory);
 }
 
-function createTaskOnPage(task, group, categoryList) {
+function createTaskOnPage(task, group, categoryList, groupName) {
     let newTask = document.createElement("div");
     newTask.classList.add("vertical_div", "task");
 
@@ -124,7 +124,11 @@ function createTaskOnPage(task, group, categoryList) {
 
     let newTaskModify = document.createElement("button");
     newTaskModify.className = "modify";
-                
+
+    newTaskModify.onclick = function () {
+        modifyTask(groupName, task.description);
+    }
+
     newTaskColorAndModify.appendChild(newTaskColor);
     newTaskColorAndModify.appendChild(newTaskModify);
 
@@ -169,29 +173,10 @@ document.getElementById("CATEGORY_LIST").addEventListener("click", function(even
     }
 });
 
-document.getElementById("TO_DO_LIST").addEventListener("click", function(event) {
-    let target = event.target;
-    // Check if the clicked element is a checkbox
-    if (target.className == "modify"){
-        window.location.href = "../task_form?group=to_do";
-    }
-});
-
-document.getElementById("IN_PROGRESS_LIST").addEventListener("click", function(event) {
-    let target = event.target;
-    // Check if the clicked element is a checkbox
-    if (target.className == "modify"){
-        window.location.href = "../task_form?group=in_progress";
-    }
-});
-
-document.getElementById("FINISHED_LIST").addEventListener("click", function(event) {
-    let target = event.target;
-    // Check if the clicked element is a checkbox
-    if (target.className == "modify"){
-        window.location.href = "../task_form?group=finished";
-    }
-});
+function modifyTask(group, task) {
+    console.log(group, task);
+    window.location.href = "../task_modify?group="+group+"&task="+task;
+}
 
 document.getElementById("REMINDER_LIST").addEventListener("click", function(event) {
     let target = event.target;

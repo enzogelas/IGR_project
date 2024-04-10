@@ -6,6 +6,7 @@ const fs = require('fs');
 const app = express();
 
 let currentGroup = "in_progress";
+let currentTask = "Send an email to Michel";
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -117,6 +118,33 @@ app.post("/add_task", (req,res) => {
             }
         });
 });
+
+app.get("/task_modify", (req,res) => {
+    currentGroup = req.query.group;
+    currentTask = req.query.task;
+    console.log("The current task is",currentTask,"and the current group is",currentGroup);
+    res.sendFile(path.join(__dirname, 'public', 'task_modify.html'));
+})
+
+app.get("/currentTask", (req,res) => {
+    fs.readFile("db.json", "utf8", (err,data) => {
+        if (err) {
+            console.error("Error while reading database");
+        } else {
+            res.writeHead(200, { "Content-Type": "application/json" });
+            
+            let completeData = JSON.parse(data);
+            for (task of completeData.tasks[currentGroup]) {
+                console.log(task);
+                if (task.description == currentTask){
+                    console.log("I found the task :",task);
+                    res.end(JSON.stringify(task));
+                    break;
+                }
+            }
+        }
+    });
+})
 
 app.listen(8080, () => {
     console.log("Application started on port 8080");
