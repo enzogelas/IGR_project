@@ -25,20 +25,20 @@
   "tasks": {
     "to_do": [
       {
-        "description": "Send an email to Michel",
-        "category": "Work"
-      },
-      {
         "description": "Finish the powerpoint",
         "category": "Associations"
       },
       {
-        "description": "Fix the light",
-        "category": "Home"
+        "description": "Secret task",
+        "category": "Secret Agent"
       },
       {
-        "description": "Agent task",
-        "category": "Secret Agent"
+        "description": "Make Funny Jokes",
+        "category": "Joking"
+      },
+      {
+        "description": "Deliveries",
+        "category": "Joking"
       }
     ],
     "in_progress": [
@@ -47,11 +47,15 @@
         "category": "Home"
       },
       {
-        "description": "Make Jokes",
+        "description": "Make Big Jokes",
         "category": "Joking"
       },
       {
-        "description": "Kill Joe",
+        "description": "Kill 007",
+        "category": "Secret Agent"
+      },
+      {
+        "description": "Kill 009",
         "category": "Secret Agent"
       }
     ],
@@ -65,7 +69,7 @@
         "category": "Associations"
       },
       {
-        "description": "Kill Bill",
+        "description": "Find secret files",
         "category": "Secret Agent"
       }
     ]

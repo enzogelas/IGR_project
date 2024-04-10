@@ -13,7 +13,6 @@ function displayCurrentTask () {
     xhttp.onreadystatechange = function () {
         if (this.status == 200 && this.readyState == 4) {
             let task = JSON.parse(this.responseText);
-            console.log(task);
 
             let taskDescription = document.getElementById("description");
             let taskCategory = document.getElementById("category");
@@ -29,16 +28,27 @@ function displayCurrentTask () {
 }
 
 function validateModification() {
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
-    // TODO TODO TODO TODO TODO TODO
+    let taskDescription = document.getElementById("description").value;
+    let taskCategory = document.getElementById("category").value;
+
+    const newTask = {
+        description: taskDescription,
+        category: taskCategory
+    };
+
+    console.log(newTask);
+
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+
+    }
+    
+    xhttp.open("POST", "../modify_task");
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(JSON.stringify(newTask));
+
+    window.location.href = "../../";
 }
 
 displayCurrentTask();

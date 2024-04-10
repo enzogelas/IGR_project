@@ -92,39 +92,74 @@ app.get("/task_form", (req,res) => {
 
 app.post("/add_task", (req,res) => {
     let newTask = req.body;
-    fs.readFile("db.json", 'utf8', (err,data) => {
-            if(err){
-                console.error("Error reading the storage ...");
-            } else {
-
-                let dataToChange = JSON.parse(data);
-
-                if(currentGroup == "to_do") dataToChange.tasks.to_do.push(newTask);            
-                else if(currentGroup == "in_progress") dataToChange.tasks.in_progress.push(newTask);            
-                else if(currentGroup == "finished") dataToChange.tasks.finished.push(newTask);            
-                
-                const updatedData = JSON.stringify(dataToChange, null, 2);
-
-                fs.writeFile("db.json", updatedData, 'utf8', (err)=>{
-                    if (err){
-                        console.error("Failed to write the new storage ...");
-                        res.writeHead(500);
-                        res.end("Failed to remove an element")
-                    } else {
-                        res.writeHead(200);
-                        res.end("Task added successfully !");
-                    }
-                });
-            }
-        });
+    addTask(newTask);
 });
+
+function addTask(task,res){
+    fs.readFile("db.json", 'utf8', (err,data) => {
+        if(err){
+            console.error("Error reading the storage ...");
+        } else {
+
+            let dataToChange = JSON.parse(data);
+
+            dataToChange.tasks[currentGroup].push(task);                        
+            
+            const updatedData = JSON.stringify(dataToChange, null, 2);
+
+            fs.writeFile("db.json", updatedData, 'utf8', (err)=>{
+                if (err){
+                    console.error("Failed to add the new task ...");
+                } else {
+                    console.log("Task added successfully !");
+                }
+            });
+        }
+    });
+}
+
+function modifyTask(formerTaskDescription, newTask){
+    
+    fs.readFile("db.json", 'utf8', (err,data) => {
+        if(err){
+            console.error("Error reading the storage ...");
+        } else {
+
+            let dataToChange = JSON.parse(data);
+
+            let indexToRemove = 0;
+            console.log(dataToChange.tasks[currentGroup][indexToRemove]);
+
+            while(dataToChange.tasks[currentGroup][indexToRemove].description != formerTaskDescription){
+                indexToRemove++;
+            }
+            
+            dataToChange.tasks[currentGroup][indexToRemove] = newTask;                 
+            
+            const updatedData = JSON.stringify(dataToChange, null, 2);
+
+            fs.writeFile("db.json", updatedData, 'utf8', (err)=>{
+                if (err){
+                    console.error("Failed to write the new storage ...");
+                    
+                } else {
+                    console.log("Task replaced successfully");
+                }
+            });
+        }
+    });
+}
 
 app.get("/task_modify", (req,res) => {
     currentGroup = req.query.group;
     currentTask = req.query.task;
-    console.log("The current task is",currentTask,"and the current group is",currentGroup);
     res.sendFile(path.join(__dirname, 'public', 'task_modify.html'));
 })
+
+app.post("/modify_task", (req,res) => {
+    let newTask = req.body;
+    modifyTask(currentTask, newTask);
+});
 
 app.get("/currentTask", (req,res) => {
     fs.readFile("db.json", "utf8", (err,data) => {
