@@ -59,6 +59,9 @@ div {
     border: none;
     background-size: cover;
     background-color: transparent;
+    margin: 3px;
+    transition: 0.1s;
+    transform-origin: 50% 50%;
 }
 
 .modify:hover, .delete:hover {
@@ -124,6 +127,11 @@ body > .vertical_div {
 }
 .horizontal_div.color_and_modify .modify {
     margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.horizontal_div.reminder .modify, .horizontal_div.category .modify {
     margin-left: auto;
     margin-right: 5px;
 }
