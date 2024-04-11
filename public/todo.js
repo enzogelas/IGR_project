@@ -1,6 +1,6 @@
-function update(){
+const xhttp = new XMLHttpRequest();
 
-    const xhttp = new XMLHttpRequest();
+function update(){
 
     xhttp.onreadystatechange = function () {
         if (this.status == 200 && this.readyState == 4){
@@ -97,8 +97,11 @@ function createCategoryOnPage(category, group) {
     newCategoryColor.className = "square";
     newCategoryColor.style.backgroundColor = category.color;
 
-    let newCategoryModify = document.createElement("div");
+    let newCategoryModify = document.createElement("button");
     newCategoryModify.className = "modify";
+    newCategoryModify.onclick = function () {
+        modifyCategory(category.name);
+    }
     
     newCategory.appendChild(newCategoryText);
     newCategory.appendChild(newCategoryColor);
@@ -124,13 +127,19 @@ function createTaskOnPage(task, group, categoryList, groupName) {
 
     let newTaskModify = document.createElement("button");
     newTaskModify.className = "modify";
-
     newTaskModify.onclick = function () {
         modifyTask(groupName, task.description);
     }
 
+    let newTaskDelete = document.createElement("button");
+    newTaskDelete.className = "delete";
+    newTaskDelete.onclick = function () {
+        deleteTask(groupName, task.description);
+    }    
+
     newTaskColorAndModify.appendChild(newTaskColor);
     newTaskColorAndModify.appendChild(newTaskModify);
+    newTaskColorAndModify.appendChild(newTaskDelete);
 
     newTask.appendChild(newTaskText);
     newTask.appendChild(newTaskColorAndModify);
@@ -145,11 +154,21 @@ function createReminderOnPage(reminder, group) {
     let newReminderText = document.createElement("p");
     newReminderText.textContent = reminder.description;
 
-    let newReminderModify = document.createElement("div");
+    let newReminderModify = document.createElement("button");
     newReminderModify.className = "modify";
+    newReminderModify.onclick = function () {
+        modifyReminder(reminder.description);
+    }
+
+    let newReminderDelete = document.createElement("button");
+    newReminderDelete.className = "delete";
+    newReminderDelete.onclick = function () {
+        deleteReminder(reminder.description);
+    }  
 
     newReminder.appendChild(newReminderText);
     newReminder.appendChild(newReminderModify);
+    newReminder.appendChild(newReminderDelete);
 
     group.appendChild(newReminder);
 }
@@ -165,25 +184,44 @@ function getColorByCategoryName(categoryList, categoryName) {
 // Implementing the modify buttons
 // 3 FOLLOWING FUNCTIONS : TO CHANGE TO CHANGE TO CHANGE URL URL URL URL
 
-document.getElementById("CATEGORY_LIST").addEventListener("click", function(event) {
-    let target = event.target;
-    // Check if the clicked element is a checkbox
-    if (target.className == "modify"){
-        window.location.href = "../category_form";
-    }
-});
+function modifyCategory(category) {
+    window.location.href = "../category_modify?category="+category;
+}
 
 function modifyTask(group, task) {
     console.log(group, task);
     window.location.href = "../task_modify?group="+group+"&task="+task;
 }
 
-document.getElementById("REMINDER_LIST").addEventListener("click", function(event) {
-    let target = event.target;
-    // Check if the clicked element is a checkbox
-    if (target.className == "modify"){
-        window.location.href = "../reminder_form";
-    }
-});
+function deleteTask(group, task) {
+    console.log(group, task);
+    const confirmation = confirm("Are you sure you want to delete the task : "+task, "Yes, delete it", "No");
+    if (confirmation){
+        xhttp.onreadystatechange = function () {
+            if (this.status == 200 && this.readyState == 4){
+                update();
+            }
+        }
+        xhttp.open("GET", "../delete_task?group="+group+"&task="+task);
+        xhttp.send();
+    }    
+}
+
+function modifyReminder(reminder){
+    window.location.href = "../reminder_modify?reminder="+reminder;  
+}
+
+function deleteReminder(reminder){
+    const confirmation = confirm("Are you sure you want to delete the reminder : "+reminder, "Yes, delete it", "No");
+    if (confirmation){
+        xhttp.onreadystatechange = function () {
+            if (this.status == 200 && this.readyState == 4){
+                update();
+            }
+        }
+        xhttp.open("GET", "../delete_reminder?reminder="+reminder);
+        xhttp.send();
+    } 
+}
 
 update();

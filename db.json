@@ -15,30 +15,26 @@
     },
     {
       "name": "Secret Agent",
-      "color": "666666"
+      "color": "#ffff00"
     },
     {
       "name": "Joking",
-      "color": "#d95959"
+      "color": "#000000"
     }
   ],
   "tasks": {
     "to_do": [
       {
-        "description": "Finish the powerpoint",
-        "category": "Associations"
-      },
-      {
         "description": "Secret task",
         "category": "Secret Agent"
       },
       {
-        "description": "Make Funny Jokes",
-        "category": "Joking"
+        "description": "Deliveries",
+        "category": "Associations"
       },
       {
-        "description": "Deliveries",
-        "category": "Joking"
+        "description": "Send an email to Michel",
+        "category": "Work"
       }
     ],
     "in_progress": [
@@ -47,42 +43,31 @@
         "category": "Home"
       },
       {
-        "description": "Make Big Jokes",
+        "description": "Protect the minister",
+        "category": "Secret Agent"
+      },
+      {
+        "description": "Make Jokes",
         "category": "Joking"
-      },
-      {
-        "description": "Kill 007",
-        "category": "Secret Agent"
-      },
-      {
-        "description": "Kill 009",
-        "category": "Secret Agent"
       }
     ],
     "finished": [
       {
-        "description": "Kill the mole",
-        "category": "Home"
-      },
-      {
-        "description": "Plan the meeting",
-        "category": "Associations"
-      },
-      {
-        "description": "Find secret files",
+        "description": "Find very secret files",
         "category": "Secret Agent"
+      },
+      {
+        "description": "Find questions for quizz",
+        "category": "Associations"
       }
     ]
   },
   "reminders": [
     {
-      "description": "Wake up at 6 a.m. tomorrow !!!"
+      "description": "Wake up at 8 a.m. tomorrow !!!"
     },
     {
       "description": "Feed the dog"
-    },
-    {
-      "description": "Feed the cat"
     }
   ]
 }

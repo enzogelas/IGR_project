@@ -2,7 +2,7 @@ const xhttp = new XMLHttpRequest();
 
 function cancel() {
     
-    window.location.href = "../../";
+    window.location.href = "../";
 
 }
 

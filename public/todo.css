@@ -51,7 +51,17 @@ div {
     transform-origin: 50% 50%;
 }
 
-.modify:hover {
+
+.delete {
+    width: 20px;
+    height: 20px;
+    background-image: url("../icons/delete.png");
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+}
+
+.modify:hover, .delete:hover {
     transform: scale(1.25);
 }
 
