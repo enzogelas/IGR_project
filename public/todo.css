@@ -34,7 +34,16 @@ div {
     background-color: white;
 }
 
-.modify:hover {
+.delete {
+    width: 20px;
+    height: 20px;
+    background-image: url("../icons/delete.png");
+    border: none;
+    background-size: cover;
+    background-color: white;
+}
+
+.modify:hover, .delete:hover {
     border: 2px solid black;
 }
 
