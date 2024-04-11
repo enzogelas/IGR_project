@@ -4,19 +4,19 @@
     </head>
     <body>
         <div id="MAIN_DIV">
-            <div class="hor_div"><h2>Add a category</h2></div>
+            <div class="hor_div"><h2>Modify a category</h2></div>
             <div class="hor_div">
                 <span>Name : </span>
-                <input type="text" id="name"></div>
+                <span id="name"></span>
+            </div>
             <div class="hor_div">
                 <span>Color</span>
                 <input type="color" id="color"></div>
             <div class="hor_div">
                 <button onclick="cancel()">Cancel</button>
-                <button onclick="addNewCategory()">Add</button>
-            </div>
-            
+                <button onclick="validateModification()">OK</button>
+            </div>     
         </div>
-        <script src="category_form.js"></script>
+        <script src="category_modify.js"></script>
     </body>
 </html>
