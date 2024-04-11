@@ -28,6 +28,7 @@ body {
     align-items: center;
     gap: 10px;
     display: flex;
+    text-wrap: nowrap;
 }
 
 input[type="text"] {
