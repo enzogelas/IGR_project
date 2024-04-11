@@ -17,7 +17,7 @@ function displayCurrentCategory () {
             let categoryName = document.getElementById("name");
             let categoryColor = document.getElementById("color");
 
-            categoryName.textContent = category.name;
+            categoryName.value = category.name;
             categoryColor.value = category.color;
         }
     }
@@ -28,7 +28,7 @@ function displayCurrentCategory () {
 }
 
 function validateModification() {
-    let categoryName = document.getElementById("name").textContent;
+    let categoryName = document.getElementById("name").value;
     let categoryColor = document.getElementById("color").value;
 
     const newCategory = {
