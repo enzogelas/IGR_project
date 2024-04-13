@@ -1,7 +1,7 @@
 const xhttp = new XMLHttpRequest();
 
 function update(){
-
+    console.log("Updating the page !")
     xhttp.onreadystatechange = function () {
         if (this.status == 200 && this.readyState == 4){
             let data = JSON.parse(this.responseText);
@@ -102,15 +102,42 @@ function createCategoryOnPage(category, group) {
     newCategoryModify.onclick = function () {
         modifyCategory(category.name);
     }
+
+    let newCategoryDelete = document.createElement("button");
+    newCategoryDelete.className = "delete";
+    newCategoryDelete.onclick = function () {
+        deleteCategory(category.name);
+    }
+
+    let newCategoryDisplay = document.createElement("input");
+    newCategoryDisplay.type = "checkbox";
+    newCategoryDisplay.className = "display";
+    newCategoryDisplay.checked = category.checked;
+    newCategory.addEventListener("change", function(event){
+        const xhttp2 = new XMLHttpRequest();
+        xhttp2.onreadystatechange = function() {
+            setTimeout(update, 50);
+        };
+        xhttp2.open("POST", "../display_changed");
+        xhttp2.setRequestHeader('Content-Type', 'application/json');
+        const display = {name: category.name, checked: event.target.checked};
+        xhttp2.send(JSON.stringify(display));
+
+    });
     
     newCategory.appendChild(newCategoryText);
     newCategory.appendChild(newCategoryColor);
     newCategory.appendChild(newCategoryModify);
+    newCategory.appendChild(newCategoryDelete);
+    newCategory.appendChild(newCategoryDisplay);
     
     group.appendChild(newCategory);
 }
 
 function createTaskOnPage(task, group, categoryList, groupName) {
+    // Test if the category is displayed
+    if(!getCheckedByCategoryName(categoryList, task.category)) return;
+    // Add the task if necessary
     let newTask = document.createElement("div");
     newTask.classList.add("vertical_div", "task");
 
@@ -175,17 +202,36 @@ function createReminderOnPage(reminder, group) {
 
 function getColorByCategoryName(categoryList, categoryName) {
     let i=0;
-    while (categoryName != categoryList[i].name){
+    while (categoryName != categoryList[i].name && i<categoryList.length){
         i++;
     }
     return categoryList[i].color;
 }
 
-// Implementing the modify buttons
-// 3 FOLLOWING FUNCTIONS : TO CHANGE TO CHANGE TO CHANGE URL URL URL URL
+function getCheckedByCategoryName(categoryList, categoryName){
+    let i=0;
+    while (categoryName != categoryList[i].name && i<categoryList.length){
+        i++;
+    }
+    return categoryList[i].checked;
+}
 
 function modifyCategory(category) {
     window.location.href = "../category_modify?category="+category;
+}
+
+function deleteCategory(category) {
+    console.log(category);
+    const confirmation = confirm("Are you sure you want to delete the category : "+category, "Yes, delete it", "No");
+    if (confirmation){
+        xhttp.onreadystatechange = function () {
+            if (this.status == 200 && this.readyState == 4){
+                update();
+            }
+        }
+        xhttp.open("GET", "../delete_category?category="+category);
+        xhttp.send();
+    } 
 }
 
 function modifyTask(group, task) {

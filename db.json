@@ -2,72 +2,50 @@
   "title": "TOODOO : The best way to remember everything",
   "categories": [
     {
-      "name": "Work",
-      "color": "ff0000"
-    },
-    {
-      "name": "Home",
-      "color": "00ff00"
+      "name": "Homework",
+      "color": "#4838c2",
+      "checked": true
     },
     {
       "name": "Associations",
-      "color": "0000ff"
-    },
-    {
-      "name": "Secret Agent",
-      "color": "#ffff00"
-    },
-    {
-      "name": "Joking",
-      "color": "#000000"
+      "color": "#e42121",
+      "checked": true
     }
   ],
   "tasks": {
     "to_do": [
       {
-        "description": "Secret task",
-        "category": "Secret Agent"
+        "description": "Review MATHS",
+        "category": "Homework"
       },
       {
-        "description": "Deliveries",
+        "description": "Contact Joe",
         "category": "Associations"
-      },
-      {
-        "description": "Send an email to Michel",
-        "category": "Work"
       }
     ],
     "in_progress": [
       {
-        "description": "Write a music sheet",
-        "category": "Home"
+        "description": "Review SES",
+        "category": "Homework"
       },
       {
-        "description": "Protect the minister",
-        "category": "Secret Agent"
-      },
-      {
-        "description": "Make Jokes",
-        "category": "Joking"
+        "description": "Contact Michael",
+        "category": "Associations"
       }
     ],
     "finished": [
       {
-        "description": "Find very secret files",
-        "category": "Secret Agent"
-      },
-      {
-        "description": "Find questions for quizz",
-        "category": "Associations"
+        "description": "Review English",
+        "category": "Homework"
       }
     ]
   },
   "reminders": [
     {
-      "description": "Wake up at 8 a.m. tomorrow !!!"
+      "description": "Enjoy your day !!"
     },
     {
-      "description": "Feed the dog"
+      "description": "Wake up at 8 a.m. everyday !!"
     }
   ]
 }

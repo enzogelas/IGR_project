@@ -33,7 +33,8 @@ function validateModification() {
 
     const newCategory = {
         name: categoryName,
-        color: categoryColor
+        color: categoryColor,
+        checked: true
     };
 
     console.log(newCategory);

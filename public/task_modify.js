@@ -48,7 +48,7 @@ function validateModification() {
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(JSON.stringify(newTask));
 
-    window.location.href = "../../";
+    window.location.href = "../";
 }
 
 displayCurrentTask();

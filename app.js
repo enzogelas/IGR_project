@@ -86,7 +86,15 @@ function modifyCategory(formerCategoryName, newCategory){
                 indexToRemove++;
             }
             
-            dataToChange.categories[indexToRemove] = newCategory;                 
+            dataToChange.categories[indexToRemove] = newCategory;   
+            
+            for (group of ["to_do","in_progress","finished"]){
+                for (task of dataToChange.tasks[group]){
+                    if (task.category == formerCategoryName){
+                        task.category = newCategory.name;
+                    }
+                }
+            }
             
             const updatedData = JSON.stringify(dataToChange, null, 2);
 
@@ -98,6 +106,57 @@ function modifyCategory(formerCategoryName, newCategory){
                     console.log("Reminder replaced successfully");
                 }
             });
+        }
+    });
+}
+
+app.get("/delete_category", (req,res) => {
+    currentCategory = req.query.category;
+    deleteCategory(currentCategory);
+    res.sendFile(path.join(__dirname, 'public', 'todo.html'));
+});
+
+function deleteCategory(categoryName) {
+    fs.readFile("db.json", 'utf8', (err,data) => {
+        if(err){
+            console.error("Error reading the storage ...");
+        } else {
+
+            let dataToChange = JSON.parse(data);
+
+            console.log("I want to delete :", categoryName);
+
+            let canDelete = true;
+            for (group of ["to_do","in_progress","finished"]){
+                for (task of dataToChange.tasks[group]){
+                    if (task.category == categoryName){
+                        canDelete = false;
+                        break;
+                    }
+                }
+            }
+            if (!canDelete) return canDelete;
+            if (canDelete){
+                let indexToRemove = 0;
+
+                while(dataToChange.categories[indexToRemove].name != categoryName){
+                    indexToRemove++;
+                }
+                
+                dataToChange.categories.splice(indexToRemove,1);                 
+                
+                const updatedData = JSON.stringify(dataToChange, null, 2);
+
+                fs.writeFile("db.json", updatedData, 'utf8', (err)=>{
+                    if (err){
+                        console.error("Failed to write the new storage ...");
+                        
+                    } else {
+                        console.log("Task replaced successfully");
+                    }
+                });
+                return canDelete;
+            }
         }
     });
 }
@@ -120,6 +179,34 @@ app.get("/currentCategory", (req,res) => {
             }
         }
     });
+});
+
+app.post("/display_changed", (req,res) => {
+    let categoryToChange = req.body;
+    console.log("I change the display of category :",categoryToChange.name);
+    fs.readFile("db.json", 'utf8', (err,data) => {
+        if(err){
+            console.error("Error reading the storage ...");
+        } else {
+
+            let dataToChange = JSON.parse(data);
+            let indexToChange = 0;
+            while(dataToChange.categories[indexToChange].name != categoryToChange.name){
+                indexToChange++;
+            }          
+            dataToChange.categories[indexToChange].checked = categoryToChange.checked;
+            const updatedData = JSON.stringify(dataToChange, null, 2);
+
+            fs.writeFile("db.json", updatedData, 'utf8', (err)=>{
+                if (err){
+                    console.error("Failed to add the reminder ...");
+                } else {
+                    console.log("Display changed successfully !");
+                }
+            });
+        }
+    });
+
 })
 
 app.get("/reminder_form", (req,res) => {
@@ -130,23 +217,6 @@ app.post("/add_reminder", (req,res) => {
     let newReminder = req.body;
     addReminder(newReminder);
 });
-
-app.get("/reminder_modify", (req,res) => {
-    currentReminder = req.query.reminder;
-    console.log("Current reminder :",currentReminder);
-    res.sendFile(path.join(__dirname, 'public', 'reminder_modify.html'))
-})
-
-app.post("/modify_reminder", (req,res) => {
-    let newReminder = req.body;
-    modifyReminder(currentReminder, newReminder);
-});
-
-app.get("/delete_reminder", (req,res) => {
-    currentReminder = req.query.reminder;
-    deleteReminder(currentReminder);
-    res.sendFile(path.join(__dirname, 'public', 'todo.html'))
-})
 
 function addReminder(newReminder) {
     fs.readFile("db.json", 'utf8', (err,data) => {
@@ -168,6 +238,17 @@ function addReminder(newReminder) {
         }
     });
 }
+
+app.get("/reminder_modify", (req,res) => {
+    currentReminder = req.query.reminder;
+    console.log("Current reminder :",currentReminder);
+    res.sendFile(path.join(__dirname, 'public', 'reminder_modify.html'))
+})
+
+app.post("/modify_reminder", (req,res) => {
+    let newReminder = req.body;
+    modifyReminder(currentReminder, newReminder);
+});
 
 function modifyReminder(formerReminderDescription, newReminder){
     
@@ -200,6 +281,12 @@ function modifyReminder(formerReminderDescription, newReminder){
         }
     });
 }
+
+app.get("/delete_reminder", (req,res) => {
+    currentReminder = req.query.reminder;
+    deleteReminder(currentReminder);
+    res.sendFile(path.join(__dirname, 'public', 'todo.html'))
+});
 
 function deleteReminder(reminderDescription){
     fs.readFile("db.json", 'utf8', (err,data) => {
