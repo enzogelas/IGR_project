@@ -32,6 +32,26 @@ body {
     margin: 10px;
 }
 
+.ver_div {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    display: flex;
+    text-wrap: nowrap;
+    margin: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 input[type="text"] {
     padding: 10px;
     border: none;

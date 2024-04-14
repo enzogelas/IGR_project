@@ -20,6 +20,11 @@
       "name": "Joking",
       "color": "#afd624",
       "checked": true
+    },
+    {
+      "name": "Secret Agent",
+      "color": "#a3a3a3",
+      "checked": true
     }
   ],
   "tasks": {
@@ -31,6 +36,10 @@
       {
         "description": "Contact Joe",
         "category": "Associations"
+      },
+      {
+        "description": "Review Maths 2",
+        "category": "Work"
       }
     ],
     "in_progress": [
@@ -39,12 +48,12 @@
         "category": "Work"
       },
       {
-        "description": "Contact Michael",
-        "category": "Associations"
-      },
-      {
         "description": "Kill the snails",
         "category": "Home"
+      },
+      {
+        "description": "Kill the mole",
+        "category": "Secret Agent"
       }
     ],
     "finished": [
@@ -54,7 +63,7 @@
       },
       {
         "description": "Make big jokes",
-        "category": "Joking"
+        "category": "Associations"
       }
     ]
   },

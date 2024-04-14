@@ -185,6 +185,19 @@ app.get("/currentCategory", (req,res) => {
     });
 });
 
+app.get("/categories", (req,res) => {
+    fs.readFile("db.json", "utf8", (err,data) => {
+        if (err) {
+            console.error("Error while reading database");
+        } else {
+            res.writeHead(200, { "Content-Type": "application/json" });
+            
+            let completeData = JSON.parse(data);
+            res.end(JSON.stringify(completeData.categories));
+        }
+    });
+});
+
 app.post("/display_changed", (req,res) => {
     let categoryToChange = req.body;
     console.log("I change the display of category :",categoryToChange.name);
