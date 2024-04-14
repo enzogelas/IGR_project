@@ -116,7 +116,9 @@ function createCategoryOnPage(category, group) {
     newCategory.addEventListener("change", function(event){
         const xhttp2 = new XMLHttpRequest();
         xhttp2.onreadystatechange = function() {
-            setTimeout(update, 50);
+            if (this.status == 200 && this.readyState == 4){
+                update();
+            }
         };
         xhttp2.open("POST", "../display_changed");
         xhttp2.setRequestHeader('Content-Type', 'application/json');

@@ -5,8 +5,8 @@ const fs = require('fs');
 
 const app = express();
 
-let currentGroup = "in_progress";
-let currentTask = "Send an email to Michel";
+let currentGroup = "to_do";
+let currentTask = "l";
 let currentReminder = "";
 let currentCategory = "";
 
@@ -34,7 +34,9 @@ app.get("/category_form", (req,res) => {
 
 app.post("/add_category", (req,res) => {
     let newCategory = req.body;
-    addCategory(newCategory);    
+    addCategory(newCategory); 
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Category added successfully !!");   
 });
 
 function addCategory(newCategory) {
@@ -67,7 +69,9 @@ app.get("/category_modify", (req,res) => {
 
 app.post("/modify_category", (req,res) => {
     let newCategory = req.body;
-    modifyCategory(currentCategory, newCategory);    
+    modifyCategory(currentCategory, newCategory);   
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Category modified successfully !!");   
 });
 
 function modifyCategory(formerCategoryName, newCategory){
@@ -202,6 +206,8 @@ app.post("/display_changed", (req,res) => {
                     console.error("Failed to add the reminder ...");
                 } else {
                     console.log("Display changed successfully !");
+                    res.writeHead(200, { "Content-Type": "text/plain" });
+                    res.end("Display chenged successfully !!");
                 }
             });
         }
@@ -216,6 +222,8 @@ app.get("/reminder_form", (req,res) => {
 app.post("/add_reminder", (req,res) => {
     let newReminder = req.body;
     addReminder(newReminder);
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Reminder added successfully !!");  
 });
 
 function addReminder(newReminder) {
@@ -248,6 +256,8 @@ app.get("/reminder_modify", (req,res) => {
 app.post("/modify_reminder", (req,res) => {
     let newReminder = req.body;
     modifyReminder(currentReminder, newReminder);
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Reminder modified successfully !!");  
 });
 
 function modifyReminder(formerReminderDescription, newReminder){
@@ -349,6 +359,8 @@ app.get("/task_form", (req,res) => {
 app.post("/add_task", (req,res) => {
     let newTask = req.body;
     addTask(newTask);
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Task added successfully !!");  
 });
 
 app.get("/task_modify", (req,res) => {
@@ -360,6 +372,8 @@ app.get("/task_modify", (req,res) => {
 app.post("/modify_task", (req,res) => {
     let newTask = req.body;
     modifyTask(currentTask, newTask);
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Task modified successfully !!");  
 });
 
 app.get("/delete_task", (req,res) => {

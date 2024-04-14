@@ -2,7 +2,7 @@
   "title": "TOODOO : The best way to remember everything",
   "categories": [
     {
-      "name": "Homework",
+      "name": "Work",
       "color": "#4838c2",
       "checked": true
     },
@@ -10,13 +10,23 @@
       "name": "Associations",
       "color": "#e42121",
       "checked": true
+    },
+    {
+      "name": "Home",
+      "color": "#000000",
+      "checked": true
+    },
+    {
+      "name": "Joking",
+      "color": "#afd624",
+      "checked": true
     }
   ],
   "tasks": {
     "to_do": [
       {
         "description": "Review MATHS",
-        "category": "Homework"
+        "category": "Work"
       },
       {
         "description": "Contact Joe",
@@ -26,17 +36,25 @@
     "in_progress": [
       {
         "description": "Review SES",
-        "category": "Homework"
+        "category": "Work"
       },
       {
         "description": "Contact Michael",
         "category": "Associations"
+      },
+      {
+        "description": "Kill the snails",
+        "category": "Home"
       }
     ],
     "finished": [
       {
         "description": "Review English",
-        "category": "Homework"
+        "category": "Work"
+      },
+      {
+        "description": "Make big jokes",
+        "category": "Joking"
       }
     ]
   },
