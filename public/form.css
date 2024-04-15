@@ -42,13 +42,10 @@ body {
     margin: 10px;
 }
 
-ul {
-    list-style-type: none;
-}
-
 li {
     display: flex;
     flex-direction: row;
+    margin-left: 10px;
     gap: 10px;
 }
 

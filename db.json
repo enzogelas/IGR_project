@@ -17,13 +17,13 @@
       "checked": true
     },
     {
-      "name": "Joking",
-      "color": "#afd624",
+      "name": "Secret Agent",
+      "color": "#a3a3a3",
       "checked": true
     },
     {
-      "name": "Secret Agent",
-      "color": "#a3a3a3",
+      "name": "Jokes",
+      "color": "#32891a",
       "checked": true
     }
   ],
@@ -38,8 +38,8 @@
         "category": "Associations"
       },
       {
-        "description": "Review Maths 2",
-        "category": "Work"
+        "description": "Deliver breakfasts",
+        "category": "Associations"
       }
     ],
     "in_progress": [
@@ -54,25 +54,28 @@
       {
         "description": "Kill the mole",
         "category": "Secret Agent"
+      },
+      {
+        "description": "Prank Thomas",
+        "category": "Jokes"
       }
     ],
     "finished": [
       {
-        "description": "Review English",
-        "category": "Work"
-      },
-      {
         "description": "Make big jokes",
-        "category": "Associations"
+        "category": "Jokes"
       }
     ]
   },
   "reminders": [
     {
-      "description": "Enjoy your day !!"
+      "description": "Wake up at 8 a.m. everyday !!"
     },
     {
-      "description": "Wake up at 8 a.m. everyday !!"
+      "description": "No class on Thursday. Have fun !"
+    },
+    {
+      "description": "Call mom every Thursday !!"
     }
   ]
 }
