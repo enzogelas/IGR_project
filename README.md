@@ -2,9 +2,11 @@
 This application is a simplified TO-DO manager.
 
 ![General view of the application](public/images/general-view.png)
+
 *General view of the application*
 
 ![](public/images/creating-category.png) ![](public/images/modifying-task.png)
+
 *Other views of the application*
 
 ### Launch the application
