@@ -20,11 +20,6 @@
       "name": "Secret Agent",
       "color": "#a3a3a3",
       "checked": true
-    },
-    {
-      "name": "Jokes",
-      "color": "#32891a",
-      "checked": true
     }
   ],
   "tasks": {
@@ -32,10 +27,6 @@
       {
         "description": "Review MATHS",
         "category": "Work"
-      },
-      {
-        "description": "Contact Joe",
-        "category": "Associations"
       },
       {
         "description": "Deliver breakfasts",
@@ -54,23 +45,11 @@
       {
         "description": "Kill the mole",
         "category": "Secret Agent"
-      },
-      {
-        "description": "Prank Thomas",
-        "category": "Jokes"
       }
     ],
-    "finished": [
-      {
-        "description": "Make big jokes",
-        "category": "Jokes"
-      }
-    ]
+    "finished": []
   },
   "reminders": [
-    {
-      "description": "Wake up at 8 a.m. everyday !!"
-    },
     {
       "description": "No class on Thursday. Have fun !"
     },
