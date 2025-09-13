@@ -11,8 +11,10 @@ This application is a simplified TO-DO manager.
 
 ### Launch the application
 
-To launch it on your computer, run : node app.js [number of port] and enjoy 
-
+To launch it on your computer, run node app.js [number of port] :
+~~~
+    node app.js 8000 
+~~~
 ### Credentials
 
 Made with Enzo GELAS, Ewen Collin and Ghislaine GUIGUOUD
